@@ -12,7 +12,7 @@ Cone is a minimal React framework enforcing stateless components, unidirectional
 
 ## Hello World
 
-The below assumed a build env is setup and some html markup exists with a `<div id="mount"></div>` element.
+The below assumes a build env is setup and some html markup exists with a `<div id="mount"></div>` element.
 
 ```javascript
 import React from 'react';
