@@ -1,0 +1,24 @@
+{
+  "name": "cone",
+  "version": "1.0.0",
+  "description": "A minimal React framework enforcing simplicity through stateless components and unidirectional data flow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danpaul/cone.git"
+  },
+  "keywords": [
+    "react",
+    "immutable",
+    "stateless"
+  ],
+  "author": "Dan Breczinski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danpaul/cone/issues"
+  },
+  "homepage": "https://github.com/danpaul/cone#readme"
+}
