@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/danpaul/cone/issues"
   },
-  "homepage": "https://github.com/danpaul/cone#readme"
+  "homepage": "https://github.com/danpaul/cone#readme",
+  "dependencies": {
+    "immutable-js-store": "0.0.3",
+    "lodash": "^4.17.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "recompose": "^0.26.0"
+  }
 }
