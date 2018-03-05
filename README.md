@@ -1,4 +1,4 @@
-# About
+# Cone
 
 Cone is a minimal React framework enforcing stateless components, unidirectional data flow and immutable data. The frameworks motivation is simplicity. These are a few of its benefits:
 
@@ -10,52 +10,13 @@ Cone is a minimal React framework enforcing stateless components, unidirectional
 ## Getting started
 `npm install https://github.com/danpaul/cone --save`
 
-## Hello World
+Describe cone here.
 
-The below assumes a build env is setup and some html markup exists with a `<div id="mount"></div>` element.
+[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
+[build]: https://travis-ci.org/user/repo
 
-```javascript
-import React from 'react';
-import { AddAction, Actions, Component, Root } from 'cone';
+[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
+[npm]: https://www.npmjs.org/package/npm-package
 
-/**
- * Define initial data strucuture
- */
-const INITIAL_DATA = { visible: false };
-
-/**
- * Define app actions. These are exposed to the componets and allow
- * 	triggering state change. When called, callback gets passed an options object
- * 	as the first argument and the data store as the second argument. The
- *  store is an Immutable JS map.
- */
-AddAction('toggleVisible', (options, store) => {
-	store.set('visible', !store.get('visible'));
-});
-
-/*
- * Define root component. This is bound to app data and gets re-rendered
- * 	on app data change. The data is an Immutable JS Map containing all app state.
- * 	
- * The first argument defines which HTML element the app is injected into. The
- *  last argument is optional and is a regular JS object containing the app's
- *  initial state.
- */
-Root(document.getElementById('mount'), (props) => {
-	const { data } = props;
-	return (
-		<div>
-			<Message message={data.get('visible') ? 'olah mundo' : ''} />
-			<a onClick={Actions.toggleVisible}>Toggle</a>
-		</div>
-	);
-}, INITIAL_DATA);
-
-/**
- * Child component. All non-root components are child components.
- */
-const Message = Component(({ message }) => {
-	return <h1>{ message }</h1>;
-});
-
-```
+[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
+[coveralls]: https://coveralls.io/github/user/repo

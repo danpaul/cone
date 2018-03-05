@@ -1,22 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { onlyUpdateForKeys, pure, toClass } from "recompose";
-import { isFunction } from "lodash";
-import ImmutableStore from "immutable-js-store";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { pure, toClass } from 'recompose'
+import { isFunction } from 'lodash'
+import ImmutableStore from 'immutable-js-store'
 
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: props.store.getState() };
-    props.store.subscribe(data => {
+    props.store.subscribe((data) => {
       this.setState({ data });
     });
   }
   render() {
     const Root = this.props.root;
-    return React.createElement(Root, { data: this.state.data });
+    return <Root data={this.state.data} />;
   }
-}
+};
 
 class Cone {
   constructor() {
@@ -30,33 +30,31 @@ class Cone {
   AddAction(actionName, action) {
     this.Actions[actionName] = (data = {}) => {
       action(data, this.store);
-    };
+    }
   }
   Component(componentFunction) {
     const componentClass = toClass(componentFunction);
-    componentClass.shouldComponentUpdate = nextProps => {
+    componentClass.shouldComponentUpdate = (nextProps) => {
       nextProps.forEach((value, key) => {
-        if (!isFunction(value) && componentClass.props[key] !== value) {
+        if (!isFunction(value) &&
+          componentClass.props[key] !== value) {
+
           return true;
         }
       });
       return false;
-    };
+    }
     return componentClass;
   }
   Root(element, componentFunction, initialData = {}) {
     const Root = pure(componentFunction);
     this.initStore(initialData);
     const store = this.store;
-    document.addEventListener("DOMContentLoaded", function() {
-      ReactDOM.render(
-        React.createElement(Wrapper, {
-			initialData: initialData,
-			root: Root,
-			store: store
-        }),
-        document.getElementById("mount")
-      );
+    document.addEventListener('DOMContentLoaded', function() {
+        ReactDOM.render(
+          <Wrapper initialData={initialData} root={Root} store={store} />,
+          element
+        );
     });
   }
 }
